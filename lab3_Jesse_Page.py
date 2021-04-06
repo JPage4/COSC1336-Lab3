@@ -65,31 +65,32 @@ def is_leap_year(user_name, season, year):
         print(".",year, "was not a leap year.")
 
 
-    # For example, if they have 589 pennies they will get:
-    # 5 dollars
-    # 3 quarters
-    # 1 dime
-    # 4 pennies
 def penny_jar():
     pennies = int(input("Please enter the amount of pennies: "))
+    #counts dollars
     dollars = pennies // 100
+    #counts remaining pennies after dollars are counted
     pennies_left_dollars = pennies % 100
     print (dollars, "dollars")
 
     if pennies_left_dollars != 0:
+        #counts quarters from remaining pennies
         quarters = pennies_left_dollars // 25
+        #counts remaining pennies after quarters are counted 
         pennies_left_quarters = pennies_left_dollars % 25
     print (quarters, "quarters")
         
-
     if pennies_left_quarters != 0:
+        #counts dimes from remaining pennies
         dimes = pennies_left_quarters // 10
+        #counts remaining pennies after dimes are counted 
         pennies_left_dimes = pennies_left_quarters % 10
     print (dimes, "dimes")
 
-
     if pennies_left_dimes != 0:
+        #counts nickels from remaining pennies
         nickels = pennies_left_dimes // 5
+        #counts remaining pennies after nickels are counted 
         pennies_left_total = pennies_left_dimes % 5
         print(nickels, "nickels")
         print(pennies_left_total, "pennies")
