@@ -1,8 +1,13 @@
 #Jesse Page
 #Lab 3 assignment             
-#This program will take prompt the user to enter their name and birth month and year.
-#The program will then output to the console a greeting with their name, 
-# what season they were born, and whether or not they were born in a leap year    
+#This program will take prompt the user to enter their name 
+# and birth month and year.
+#The program will then output to the console a greeting with 
+# their name, what season they were born, and whether 
+# or not they were born in a leap year.
+# It will also promt the user to enter an integer of
+# how many pennies thay have, and print out the value
+# in dollars, quarters, dimes, nickels and pennies    
 
 def main():
     # sentinel variable
@@ -13,11 +18,16 @@ def main():
 
     # Check for the sentinal value of "zzz"
     while user_name != CONTROL:
+        # call get_month function, assign return value to variable month
         month = get_month()
+        # call get_year function, assign return value to variable year
         year = get_year()
+        # call find_season function, assign return value to variable season
         season = find_season(month)
+        # call is_leap_year function, assign return value to variable leap_year
         leap_year = is_leap_year(year)
 
+        # Display message to the user
         if leap_year == True:
             print("Hello,", user_name, end="")
             print("! You were born in the", season, end="")
@@ -26,13 +36,15 @@ def main():
             print("Hello,", user_name, end="")
             print("! You were born in the", season, end="")
             print(".",year, "was not a leap year.")
-
-        pennies_input = int(input("How many pennies do you have?"))
+        
+        # Reads user's amount of pennies
+        pennies_input = int(input("How many pennies do you have? "))
+        # call penny_jar function, pass in user's amount of pennies as argument
         penny_jar(pennies_input)
-        print("Enter zzz to stop or enter another name to continue")
-        user_name = input("Please enter your name: ")
 
-
+        # Update read for the sentinel-controlled while loop
+        # Read the next user's name or "zzz" to quit
+        user_name = input("Enter your name or 'zzz' to quit: ")
 
 def get_month():
     user_birth_month = int(input("Please enter your birth month: "))
@@ -65,17 +77,22 @@ def find_season(month):
         season = "fall"
     elif month == 12:
         season = "winter"
+    # returns a string value of the corresponding season
     return season
 
 # year parameter is the return value from function get_year
 def is_leap_year(year):
     #if-else condition to check if year is a leap year
     if year % 4 == 0 and (year % 400 == 0 or year % 100 != 0):
+        # returns boolean value
         return True
     else:
+        # returns boolean value
         return False
 
 # pennies parameter is the value of the variable pennies_input
+# this function will calculate and display the number of each money 
+# denomination they will get when they cash them in
 def penny_jar(pennies):
     try:
         #counts dollars
@@ -105,7 +122,10 @@ def penny_jar(pennies):
             pennies_left_total = pennies_left_dimes % 5
             print(nickels, "nickels")
             print(pennies_left_total, "pennies")
+
+    # if user does not enter a valid integer, an exception is raised
     except ValueError as err:
         print(err)
+        
     
 main()
